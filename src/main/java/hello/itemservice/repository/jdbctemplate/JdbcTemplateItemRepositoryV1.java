@@ -76,18 +76,18 @@ public class JdbcTemplateItemRepositoryV1 implements ItemRepository {
         String sql = "select id, item_name, price, quantity where id=?";
         //동적 쿼리
         if (StringUtils.hasText(itemName) || maxPrice != null) {
-            sql += " where";
+            sql += "where";
         }
         boolean andFlag = false;
         List<Object> param = new ArrayList<>();
         if (StringUtils.hasText(itemName)) {
-            sql += " item_name like concat('%',?,'%')";
+            sql += "item_name like concat('%',?,'%')";
             param.add(itemName);
             andFlag = true;
         }
         if (maxPrice != null) {
             if (andFlag) {
-                sql += " and";
+                sql += "and";
             }
             sql += " price <= ?";
             param.add(maxPrice);
